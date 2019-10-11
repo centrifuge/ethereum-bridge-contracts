@@ -5,34 +5,34 @@ import "ds-test/test.sol";
 import "../bridge_asset.sol";
 
 contract BridgeAssetTest is DSTest {
-  BridgeAsset bridgeAsset;
+  BridgeAsset bridge_asset;
 
   function setUp() public {
-    bridgeAsset = new BridgeAsset(3);
+    bridge_asset = new BridgeAsset(3);
   }
 
   function testOnlyStoreGasUsage() public logs_gas {
-    uint256 assetId = 0x12345;
-    bytes32 assetVal = sha256(hex"000100000000000f");
-    bridgeAsset.store(assetId, assetVal);
+    uint256 asset_id = 0x12345;
+    bytes32 asset_val = sha256(hex"000100000000000f");
+    bridge_asset.store(asset_id, asset_val);
   }
 
   function testSingleStoreRound() public logs_gas {
-    uint256 assetId = 0x12345;
-    bytes32 assetVal = sha256(hex"000100000000000f");
-    bridgeAsset.store(assetId, assetVal);
-    bridgeAsset.store(assetId, assetVal);
-    bridgeAsset.store(assetId, assetVal);
-    assertEq(bridgeAsset.getAsset(assetId), assetVal);
+    uint256 asset_id = 0x12345;
+    bytes32 asset_val = sha256(hex"000100000000000f");
+    bridge_asset.store(asset_id, asset_val);
+    bridge_asset.store(asset_id, asset_val);
+    bridge_asset.store(asset_id, asset_val);
+    assertEq(bridge_asset.getAsset(asset_id), asset_val);
   }
 
   function testIncompleteStore() public logs_gas {
-    uint256 assetId = 0x12345;
-    bytes32 assetVal = sha256(hex"000100000000000f");
-    bridgeAsset.store(assetId, assetVal);
+    uint256 asset_id = 0x12345;
+    bytes32 asset_val = sha256(hex"000100000000000f");
+    bridge_asset.store(asset_id, asset_val);
 
     // only one confirmation but 3 needed
-    assertEq(bridgeAsset.getAsset(assetId), 0x0);
+    assertEq(bridge_asset.getAsset(asset_id), 0x0);
 
     // operator storing inconsistent assetVal
     //bridgeAsset.store(assetId, sha256(hex"000100000000000d")); CANNOT TEST FAIL SCENARIOS
