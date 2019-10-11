@@ -24,6 +24,7 @@ contract BridgeAssetTest is DSTest {
     bridge_asset.store(asset_id, asset_val);
     bridge_asset.store(asset_id, asset_val);
     assertEq(bridge_asset.getAsset(asset_id), asset_val);
+    // CANNOT TEST EVENT EMITTED?
   }
 
   function testIncompleteStore() public logs_gas {
@@ -33,8 +34,6 @@ contract BridgeAssetTest is DSTest {
 
     // only one confirmation but 3 needed
     assertEq(bridge_asset.getAsset(asset_id), 0x0);
-
-    // CANNOT TEST EVENT EMITTED
   }
 
   function testFailOperatorIncoherentValue() public {
