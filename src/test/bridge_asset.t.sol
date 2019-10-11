@@ -34,8 +34,15 @@ contract BridgeAssetTest is DSTest {
     // only one confirmation but 3 needed
     assertEq(bridge_asset.getAsset(asset_id), 0x0);
 
-    // operator storing inconsistent assetVal
-    //bridgeAsset.store(assetId, sha256(hex"000100000000000d")); CANNOT TEST FAIL SCENARIOS
     // CANNOT TEST EVENT EMITTED
+  }
+
+  function testFailOperatorIncoherentValue() public {
+    uint256 asset_id = 0x12345;
+    bytes32 asset_val = sha256(hex"000100000000000f");
+    bridge_asset.store(asset_id, asset_val);
+
+    // operator storing incoherent asset_val fails
+    bridge_asset.store(asset_id, sha256(hex"000100000000000d"));
   }
 }
