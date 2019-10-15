@@ -8,40 +8,39 @@ contract BridgeAssetTest is DSTest {
   BridgeAsset bridge_asset;
 
   function setUp() public {
-    bridge_asset = new BridgeAsset(3);
+    bridge_asset = new BridgeAsset(30); // 3 confirmations * 10
   }
 
   function testOnlyStoreGasUsage() public logs_gas {
-    uint256 asset_id = 0x12345;
-    bytes32 asset_val = sha256(hex"000100000000000f");
-    bridge_asset.store(asset_id, asset_val);
+    bytes32 asset = sha256(hex"000100000000000f");
+    bridge_asset.store(asset);
   }
 
   function testSingleStoreRound() public logs_gas {
-    uint256 asset_id = 0x12345;
-    bytes32 asset_val = sha256(hex"000100000000000f");
-    bridge_asset.store(asset_id, asset_val);
-    bridge_asset.store(asset_id, asset_val);
-    bridge_asset.store(asset_id, asset_val);
-    assertEq(bridge_asset.getAsset(asset_id), asset_val);
+    bytes32 asset = sha256(hex"000100000000000f");
+    bridge_asset.store(asset);
+    bridge_asset.store(asset);
+    bridge_asset.store(asset);
+    assertEq(uint(bridge_asset.assets(asset)), 1);
     // CANNOT TEST EVENT EMITTED?
   }
 
   function testIncompleteStore() public logs_gas {
-    uint256 asset_id = 0x12345;
-    bytes32 asset_val = sha256(hex"000100000000000f");
-    bridge_asset.store(asset_id, asset_val);
+    bytes32 asset = sha256(hex"000100000000000f");
+    bridge_asset.store(asset);
 
     // only one confirmation but 3 needed
-    assertEq(bridge_asset.getAsset(asset_id), 0x0);
+    assertEq(uint(bridge_asset.assets(asset)), 10);
   }
 
-  function testFailOperatorIncoherentValue() public {
-    uint256 asset_id = 0x12345;
-    bytes32 asset_val = sha256(hex"000100000000000f");
-    bridge_asset.store(asset_id, asset_val);
+  function testFailOperatorIncoherentOverride() public {
+    bytes32 asset = sha256(hex"000100000000000f");
+    bridge_asset.store(asset);
+    bridge_asset.store(asset);
+    bridge_asset.store(asset);
+    assertEq(uint(bridge_asset.assets(asset)), 1);
 
-    // operator storing incoherent asset_val fails
-    bridge_asset.store(asset_id, sha256(hex"000100000000000d"));
+    // operator storing attempts to override an already committed asset
+    bridge_asset.store(asset);
   }
 }
