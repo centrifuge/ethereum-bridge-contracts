@@ -3,4 +3,4 @@
 	url = https://github.com/dapphub/ds-test
 [submodule "src/openzeppelin-contracts"]
 	path = src/openzeppelin-contracts
-	url = git@github.com:OpenZeppelin/openzeppelin-contracts.git
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts.git
