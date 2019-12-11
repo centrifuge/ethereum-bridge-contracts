@@ -28,4 +28,12 @@ contract BridgeAsset {
     }
   }
 
+  function isAssetValid(bytes32 asset) external view returns (bool) {
+    if (assets[asset] == 1) {
+      return true;
+    }
+
+    return false;
+  }
+
 }
