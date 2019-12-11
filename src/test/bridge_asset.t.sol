@@ -1,8 +1,8 @@
 pragma solidity >=0.4.23;
 pragma experimental ABIEncoderV2;
 
-import "ds-test/test.sol";
 import "../bridge_asset.sol";
+import "../../lib/ds-test/src/test.sol";
 
 contract BridgeAssetTest is DSTest {
   BridgeAsset bridge_asset;
@@ -22,6 +22,7 @@ contract BridgeAssetTest is DSTest {
     bridge_asset.store(asset);
     bridge_asset.store(asset);
     assertEq(uint(bridge_asset.assets(asset)), 1);
+    assertTrue(bridge_asset.isAssetValid(asset));
     // CANNOT TEST EVENT EMITTED?
   }
 
@@ -39,6 +40,7 @@ contract BridgeAssetTest is DSTest {
     bridge_asset.store(asset);
     bridge_asset.store(asset);
     assertEq(uint(bridge_asset.assets(asset)), 1);
+    assertTrue(bridge_asset.isAssetValid(asset));
 
     // operator storing attempts to override an already committed asset
     bridge_asset.store(asset);
