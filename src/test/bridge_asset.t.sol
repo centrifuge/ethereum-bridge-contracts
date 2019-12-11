@@ -32,6 +32,7 @@ contract BridgeAssetTest is DSTest {
 
     // only one confirmation but 3 needed
     assertEq(uint(bridge_asset.assets(asset)), 10);
+    assertTrue(!bridge_asset.isAssetValid(asset));
   }
 
   function testFailOperatorIncoherentOverride() public {
