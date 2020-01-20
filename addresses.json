@@ -1,0 +1,162 @@
+{
+  "fulvous": {
+    "abi": [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "asset",
+            "type": "bytes32"
+          }
+        ],
+        "name": "isAssetValid",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "asset",
+            "type": "bytes32"
+          }
+        ],
+        "name": "store",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "name": "assets",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "name": "mc",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "asset",
+            "type": "bytes32"
+          }
+        ],
+        "name": "AssetStored",
+        "type": "event"
+      }
+    ],
+    "address": "0x445982361d26f22f1e3c0385eb6c31b3f423acb1"
+  },
+  "flint": {
+    "abi": [
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "asset",
+            "type": "bytes32"
+          }
+        ],
+        "name": "isAssetValid",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "asset",
+            "type": "bytes32"
+          }
+        ],
+        "name": "store",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "constant": true,
+        "inputs": [
+          {
+            "name": "",
+            "type": "bytes32"
+          }
+        ],
+        "name": "assets",
+        "outputs": [
+          {
+            "name": "",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "name": "mc",
+            "type": "uint8"
+          }
+        ],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+      },
+      {
+        "anonymous": false,
+        "inputs": [
+          {
+            "indexed": true,
+            "name": "asset",
+            "type": "bytes32"
+          }
+        ],
+        "name": "AssetStored",
+        "type": "event"
+      }
+    ],
+    "address": "0x897605db30be5b030ff294e254624f9a3b16cbbb"
+  }
+}
