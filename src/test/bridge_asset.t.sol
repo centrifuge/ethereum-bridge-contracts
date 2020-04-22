@@ -22,7 +22,7 @@ contract BridgeAssetTest is DSTest {
     bridge_asset.store(asset);
     bridge_asset.store(asset);
     assertEq(uint(bridge_asset.assets(asset)), 1);
-    assertTrue(bridge_asset.isAssetValid(asset));
+    assertTrue(bridge_asset.getHash(asset));
     // CANNOT TEST EVENT EMITTED?
   }
 
@@ -32,7 +32,7 @@ contract BridgeAssetTest is DSTest {
 
     // only one confirmation but 3 needed
     assertEq(uint(bridge_asset.assets(asset)), 10);
-    assertTrue(!bridge_asset.isAssetValid(asset));
+    assertTrue(!bridge_asset.getHash(asset));
   }
 
   function testFailOperatorIncoherentOverride() public {
@@ -41,7 +41,7 @@ contract BridgeAssetTest is DSTest {
     bridge_asset.store(asset);
     bridge_asset.store(asset);
     assertEq(uint(bridge_asset.assets(asset)), 1);
-    assertTrue(bridge_asset.isAssetValid(asset));
+    assertTrue(bridge_asset.getHash(asset));
 
     // operator storing attempts to override an already committed asset
     bridge_asset.store(asset);

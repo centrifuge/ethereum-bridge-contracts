@@ -28,7 +28,7 @@ contract BridgeAsset {
     }
   }
 
-  function isAssetValid(bytes32 asset) external view returns (bool) {
+  function getHash(bytes32 asset) public view returns (bool) {
     if (assets[asset] == 1) {
       return true;
     }
