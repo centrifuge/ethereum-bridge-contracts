@@ -3,4 +3,4 @@
 	url = https://github.com/dapphub/ds-test
 [submodule "lib/tinlake-auth"]
 	path = lib/tinlake-auth
-	url = git@github.com:centrifuge/tinlake-auth.git
+	url = https://github.comcentrifuge/tinlake-auth
