@@ -1,7 +1,7 @@
 pragma solidity >=0.5.15 <0.6.0;
 pragma experimental ABIEncoderV2;
 
-import "../lib/tinlake-auth/src/auth.sol";
+import "tinlake-auth/auth.sol";
 
 contract BridgeAsset is Auth {
 
