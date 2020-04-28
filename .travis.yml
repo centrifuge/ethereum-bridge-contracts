@@ -10,4 +10,4 @@ before_install:
   - nix-env -f $HOME/.dapp/dapptools -iA dapp solc
 
 script:
-  - dapp --use solc:0.5.0 test
+  - dapp --use solc:0.5.15 test
