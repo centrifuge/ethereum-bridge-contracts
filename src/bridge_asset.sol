@@ -1,7 +1,9 @@
 pragma solidity >=0.4.23;
 pragma experimental ABIEncoderV2;
 
-contract BridgeAsset {
+import "../lib/tinlake-auth/src/auth.sol";
+
+contract BridgeAsset is Auth {
 
   event AssetStored(
     bytes32 indexed asset
@@ -15,9 +17,10 @@ contract BridgeAsset {
 
   constructor(uint8 mc) public {
     min_count = mc;
+    wards[msg.sender] = 1;
   }
 
-  function store(bytes32 asset) public { // Add OnlyOperator modifier
+  function store(bytes32 asset) public auth { // Add OnlyOperator modifier
     require(assets[asset] != 1, "Asset cannot be changed once confirmed");
 
     assets[asset] += 10;
