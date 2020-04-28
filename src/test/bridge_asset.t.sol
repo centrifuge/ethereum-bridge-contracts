@@ -8,7 +8,7 @@ contract BridgeAssetTest is DSTest {
   BridgeAsset bridge_asset;
 
   function setUp() public {
-    bridge_asset = new BridgeAsset(30); // 3 confirmations * 10
+    bridge_asset = new BridgeAsset(30, address(0)); // 3 confirmations * 10
   }
 
   function testOnlyStoreGasUsage() public logs_gas {

@@ -15,7 +15,7 @@ export ETH_FROM=${ETH_FROM:-"0x89b0a86583c4444acfd71b463e0d3c55ae1412a5"}
 dapp update
 dapp build --extract
 
-assetAddr=$(seth send --create out/BridgeAsset.bin 'BridgeAsset(uint8)' "10")
+assetAddr=$(seth send --create out/BridgeAsset.bin 'BridgeAsset(uint8)' "10" "$ETH_FROM")
 
 jq --arg addr $assetAddr --arg env $CENT_ENV '.[$env].address = $addr' addresses.json > addresses_aux.json
 mv addresses_aux.json addresses.json

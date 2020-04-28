@@ -15,9 +15,10 @@ contract BridgeAsset is Auth {
   // confirmed - (value = 1)
   mapping (bytes32 => uint8) public assets;
 
-  constructor(uint8 mc) public {
+  constructor(uint8 mc, address rely) public {
     min_count = mc;
     wards[msg.sender] = 1;
+    wards[rely] = 1;
   }
 
   function store(bytes32 asset) public auth { // Add OnlyOperator modifier
