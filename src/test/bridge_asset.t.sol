@@ -1,4 +1,4 @@
-pragma solidity >=0.4.23;
+pragma solidity >=0.5.15 <0.6.0;
 pragma experimental ABIEncoderV2;
 
 import "../bridge_asset.sol";
