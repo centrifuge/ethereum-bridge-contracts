@@ -17,7 +17,8 @@ dapp update
 dapp build --extract
 
 assetAddr=$(seth send --create out/BridgeAsset.bin 'BridgeAsset(uint8,address)' "10" "$RELY")
-
 jq --arg addr $assetAddr --arg env $CENT_ENV '.[$env].address = $addr' addresses.json > addresses_aux.json
-
 mv addresses_aux.json addresses.json
+
+# remove deployer as ward
+seth send $assetAddr 'deny(address)' $ETH_FROM
